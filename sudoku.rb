@@ -20,23 +20,25 @@ class SudokuGame
     pos
   end
 
-  def get_val
-    val = nil
-    until val && valid_pos?(val)
+  def get_pos
+    pos = nil
+    until pos && valid_pos?(pos)
       puts "Please enter a position on the board (e.g., '3,4')"
       print "> "
-
-      begin
-        val = parse_pos(gets.chomp)
-      rescue
-        puts "Invalid position entered (did you use a comma?)"
-        puts ""
-
-        val = nil
-      end
+      pos = parse_pos(gets.chomp)
+    end
+    pos
+  end
+  
+  def get_val
+    val = nil
+    until val && valid_val?(val)
+      puts "Please enter a value between 1 and 9 (0 to clear the tile)"
+      print "> "
+      val = parse_val(gets.chomp)
     end
     val
-  end
+  end  
 
   def parse_pos(string)
     string.split(",").map { |char| Integer(char) }

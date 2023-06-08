@@ -28,9 +28,15 @@ class Board
 
   def []=(pos, value)
     x, y = pos
-    tile = grid[x][y]
-    tile.value = value
+  
+    if x.nil? || y.nil?
+      puts "Invalid position. Please provide valid coordinates."
+    else
+      tile = grid[x][y]
+      tile.value = value
+    end
   end
+  
 
   def columns
     rows.transpose
