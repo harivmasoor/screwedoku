@@ -64,7 +64,7 @@ class Board
 
   def square(idx)
     tiles = []
-    x = (idx / 3) * 3
+    x = (idx % 3) * 3
     y = (idx % 3) * 3
 
     (x...x + 3).each do |i|
